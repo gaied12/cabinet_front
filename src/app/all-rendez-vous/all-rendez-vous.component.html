@@ -1,0 +1,48 @@
+<div class="navd">
+  <a routerLink='/rendez-vous'><i class="fas fa-notes-medical"> Filtrer Rendez-vous</i> </a>
+ <i class="fas fa-notes-medical"> Prochaine Rendez-vous</i></div>
+
+<form [formGroup]="form">
+
+  <div class="form-group">
+    <label class="col-md-2 " >Choisir Date</label>
+      <div class="col-md-4">
+      <div class="input-group">
+    <input   class="form-control" formControlName="date" type="date" (ngModelChange)="filterByDate($event)">
+      </div>
+      <div class="error" *ngIf="this.form.get('date').hasError('InvalidDate')&& this.form.get('date').touched"> Veuillez choisir un autre jour que le dimanche </div>
+
+
+    </div>
+    </div>
+  </form>
+
+
+
+
+        <table class="table table-striped table-hover table-bordered">
+          <thead>
+            <tr>
+              <th> Nom Prénom</th>
+
+              <th>Date</th>
+              <th>Heure</th>
+
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let met of filtredList">
+              <td>{{met?.patient?.firstName}} {{met?.patient?.lastName}} </td>
+              <td> {{met?.date}}</td>
+                <td>{{met?.start}} </td>
+
+
+
+
+
+
+              </tr>
+              </tbody>
+              </table>
+

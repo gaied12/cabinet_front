@@ -1,0 +1,163 @@
+<div class="container">
+
+  <form class="well form-horizontal" [formGroup]='fR' >
+<fieldset>
+
+<!-- Form Name -->
+
+<!-- Text input-->
+
+<div class="form-group">
+<label class="col-md-4 control-label">Prenom</label>
+<div class="col-md-4 inputGroupContainer">
+<div class="input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+<input  name="first_name" placeholder="First Name" class="form-control" formControlName="firstName" type="text">
+  </div>
+  <p *ngIf="this.fR.get('firstName').hasError('required')&& this.fR.get('firstName').touched"class="error">Remplir le champ</p>
+
+</div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+<label class="col-md-4 control-label" >Nom</label>
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+<input name="last_name" placeholder="Last Name" class="form-control" formControlName="lastName" type="text">
+  </div>
+  <p *ngIf="this.fR.get('lastName').hasError('required')&& this.fR.get('lastName').touched"class="error">Remplir le champ</p>
+
+</div>
+</div>
+
+<div class="form-group">
+<label class="col-md-4 control-label">Spécialité</label>
+  <div class="col-md-4 selectContainer">
+  <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+  <select  class="form-control selectpicker" formControlName="specId" >
+    <option value="" disabled selected>Choisir une spécialité</option>
+
+    <option *ngFor="let spec of listSpecialty" [value]="spec.id">{{spec.specialty}} </option>
+
+  </select>
+</div>
+<p *ngIf="this.fR.get('specId').hasError('required')&& this.fR.get('specId').touched"class="error">Remplir le champ</p>
+
+</div>
+
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Email</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+  <input  placeholder="E-Mail Address" class="form-control" formControlName="email" type="text">
+    </div>
+    <p *ngIf="this.fR.get('email').hasError('required')&& this.fR.get('email').touched" class="error">Remplir le champ</p>
+    <p *ngIf="this.fR.get('email').hasError('pattern')&& this.fR.get('email').touched" class="error">Veuillez fournir une adresse email valide</p>
+
+
+  </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-4 control-label">Ville</label>
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+          <span class="input-group-addon"><i class="fas fa-map-marker-alt"></i></span>
+    <select  placeholder="Adresse de cabinet" class="form-control" formControlName="city"  type="text">
+      <option value="" disabled selected>Choisir une Ville</option>
+
+      <option *ngFor="let c of  listCity" [value]="c">{{c}}</option>
+      </select>
+
+      </div>
+      <p *ngIf="this.fR.get('city').hasError('required')&& this.fR.get('city').touched" class="error">Remplir le champ</p>
+
+
+    </div>
+    </div>
+  <div class="form-group">
+    <label class="col-md-4 control-label">Adresse</label>
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+          <span class="input-group-addon"><i class="fas fa-map-marker-alt"></i></span>
+    <input  placeholder="Adresse de cabinet" class="form-control" formControlName="address"  type="text">
+      </div>
+      <p *ngIf="this.fR.get('address').hasError('required')&& this.fR.get('address').touched" class="error">Remplir le champ</p>
+
+
+    </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label">Télephone</label>
+        <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fas fa-phone"></i></span>
+      <input  placeholder="Numéro de Télephone" class="form-control" formControlName="phoneNum" type="number">
+        </div>
+        <p *ngIf="this.fR.get('phoneNum').hasError('required')&& this.fR.get('phoneNum').touched" class="error">Remplir le champ</p>
+
+      </div>
+      </div>
+
+
+<!-- Text input-->
+
+<!-- Text input-->
+
+<div class="form-group">
+<label class="col-md-4 control-label" >Mot de passe</label>
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+<input  placeholder="Password" class="form-control" formControlName="password"  type="password">
+  </div>
+  <p *ngIf="this.fR.get('password').hasError('required')&& this.fR.get('password').touched" class="error">Remplir le champ</p>
+
+</div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+<label class="col-md-4 control-label" >Confirmer Mot de passe</label>
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+<input  placeholder="Confirm Password" class="form-control" formControlName="rPassword" type="password">
+  </div>
+  <p *ngIf="this.fR.get('rPassword').hasError('required')&& this.fR.get('rPassword').touched" class="error">Remplir le champ</p>
+  <p *ngIf="this.fR.get('rPassword').hasError('mustMatch')&& this.fR.get('rPassword').touched" class="error">vérifier Votre Mot de passe</p>
+
+
+</div>
+</div>
+
+<!-- Text input-->
+
+
+
+<!-- Text input-->
+
+
+
+<!-- Select Basic -->
+
+<!-- Success message -->
+
+<!-- Button -->
+<div class="form-group">
+<label class="col-md-4 control-label"></label>
+<div class="col-md-4">
+  <button type="button" class="btn btn-success" (click)="addDoctor()">Inscription</button>
+</div>
+</div>
+
+</fieldset>
+</form>
+</div>

@@ -1,0 +1,12 @@
+.error{
+  color:#d63031;
+  font-family: Georgia, serif;
+  font-size: 12px;
+
+}
+.card {
+  text-align: center;
+  border-radius: 5px; /* 5px rounded corners */
+
+}
+

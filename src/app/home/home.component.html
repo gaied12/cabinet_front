@@ -1,0 +1,55 @@
+<body>
+
+  <div class="wrap">
+
+    <div class="search">
+     <label class="label">ville</label>
+      <select type="text" class="searchTerm" placeholder="Ville" [(ngModel)]="city">
+        <option *ngFor="let city of citys" [value]="city">{{city}}</option>
+
+
+      </select>
+
+
+
+
+     <label class="label">Spécialité</label>
+    <select type="text" class="searchTerm" [(ngModel)]="specId" >
+      <option value="" disabled selected>Choisir une spécialité</option>
+
+      <option *ngFor="let spec of listSpecialty" [value]="spec.id">{{spec.specialty}}</option>
+
+      </select>
+
+     <button type="submit" (click)="search()"class="searchButton">
+         <i class="fa fa-search"></i>
+      </button>
+      <ng-template  #msg>
+        <p class="error">Aucun docteur trouvé correspond à votre recherche</p>
+
+      </ng-template>
+
+
+    </div>
+ </div>
+ <div>
+</div>
+
+
+ <div class="cards  "*ngIf="this.listDoctor.length!=0;else msg" >
+
+ <div class="card" style="width:400px" *ngFor="let doctor of listDoctor">
+  <img class="card-img-top" src="assets/doctor.png" alt="Card image">
+  <div class="card-body">
+    <h4 class="card-title">{{doctor?.firstName}} {{doctor?.lastName}}</h4>
+    <p class="card-text">{{doctor?.specialtyy?.specialty}}</p>
+    <p class="card-text"> <i class="fas fa-map-marker-alt"></i>{{doctor?.city}}</p>
+
+
+    <a [routerLink]="['/add-metting',doctor.id]" class="btn btn-primary" >Prendre Rendez-vous</a>
+  </div>
+</div>
+</div>
+
+
+</body>

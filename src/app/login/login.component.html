@@ -1,0 +1,38 @@
+<div class="container">
+
+  <form class="well form-horizontal" [formGroup]="fL" >
+<fieldset>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label">E-Mail</label>
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+    <input name="email" placeholder="E-Mail Address" class="form-control"  type="text" formControlName="email">
+      </div>
+      <p *ngIf="this.fL.get('email').hasError('required')&& this.fL.get('email').touched" class="error">Remplir le champ</p>
+      <p class="error" *ngIf="this.fL.get('email').hasError('Invalid')&& this.fL.get('email').touched"> Veuillez fournir une adresse email valide </p>
+
+
+    </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label" >Mot de passe</label>
+        <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <input name="user_password" placeholder="Password" class="form-control"  type="password" formControlName="password">
+        </div>
+        <p *ngIf="this.fL.get('password').hasError('required')&& this.fL.get('password').touched" class="error">Remplir le champ</p>
+
+      </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label"></label>
+        <div class="col-md-4">
+          <button type="button" class="btn btn-success" (click)="auth()">Se Connecter</button>
+        </div>
+        </div>
+
+</fieldset>
+</form>
