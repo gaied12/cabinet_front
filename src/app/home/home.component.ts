@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   constructor(private service:DoctorService) { }
 
   ngOnInit() {
+    console.log("homme")
     this.service.AllSpeciality().subscribe(data =>{
 
 
@@ -28,6 +29,7 @@ export class HomeComponent implements OnInit {
   })
   this.service.allDoctor().subscribe(data =>{
     this.listDoctor=data;
+    console.log(this.listDoctor)
   })
   this.data.country='tunisia';
   this.service.allCity(this.data).subscribe(data =>{

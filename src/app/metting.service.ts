@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MettingService {
-  url: string='http://localhost:9090/';
+  url: string='https://localhost:7240/';
 
   constructor(private http: HttpClient) { }
 allMettings(id:number): Observable<any[]>{

@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class DoctorService {
   private loginStatus = new BehaviorSubject<boolean>(false);
-  url: string='http://localhost:9090/';
+  url: string='https://localhost:7240/';
   apiUrl='https://countriesnow.space/api/v0.1/countries/cities';
 
   constructor(private http: HttpClient) { }
@@ -44,7 +44,7 @@ export class DoctorService {
     }
     searchDoctor(city:string,specId:string):Observable<any[]>{
       let params = new HttpParams();
-      params=params.append('address',city);
+      params=params.append('adresse',city);
       params=params.append('specId',specId);
 
 

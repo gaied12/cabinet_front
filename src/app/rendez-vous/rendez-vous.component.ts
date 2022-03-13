@@ -16,15 +16,20 @@ idDoctor:number;
 
 form:FormGroup
   constructor(private fb:FormBuilder,public datepipe: DatePipe,private mettingService:MettingService) {
-    this.form=this.fb.group({
-      date:['',[Validators.required,this.ValidateDate()]],
-    })
-    var user=JSON.parse(localStorage.getItem('user'));
-    this.idDoctor=user.id;
 
    }
 
   ngOnInit() {
+    this.form=this.fb.group({
+      date:['',[Validators.required,this.ValidateDate()]],
+    })
+
+    let user=JSON.parse(localStorage.getItem('user') );
+    if (!user) {
+      console.log(user);
+    }
+    this.idDoctor=user.id;
+
 
 
 this.allMettings();

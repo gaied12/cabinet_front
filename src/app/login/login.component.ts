@@ -22,25 +22,38 @@ fL:FormGroup;
 
   ngOnInit() {
   }
+
   auth(){
-  if (this.fL.invalid)
-{
-  return ;
-}
+    if (this.fL.invalid)
+  {
+    return ;
+  }
 
-    this.service.auth(this.fL.value).subscribe(data => {
-      if (data.code=='98'){
-        alert('Email ou password Incorrect')
-      }
-      else{
+      this.service.auth(this.fL.value).subscribe(data => {
+        if (data==-1){
+          alert('Email ou password Incorrect')
+        }
+        else{
+          console.log(data)
+          this.getDoctor(data);
 
-        localStorage.setItem('user',JSON.stringify(data));
+
+
+        }
+      })
+    }
+    getDoctor(id:number):any{
+      this.service.getDOctor(id).subscribe(res=>{
+        localStorage.setItem('user',JSON.stringify(res));
+        console.log(res)
         this.service.setLogged(true);
         this.route.navigateByUrl('/rendez-vous')
 
-      }
-    })
-  }
+
+  return res;
+      })
+
+    }
 
 
 
